@@ -1,0 +1,48 @@
+:root {
+  --primary: #4f46e5;       /* Indigo */
+  --primary-dark: #3730a3;
+  --primary-light: #818cf8;
+  --accent: #06b6d4;        /* Cyan */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg-dark: #0f172a;       /* Slate 900 */
+  --bg-card: #1e293b;       /* Slate 800 */
+  --bg-input: #334155;      /* Slate 700 */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border: #475569;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+a { color: var(--primary-light); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Bootstrap overrides */
+.btn-primary { background: var(--primary); border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.form-control, .form-select {
+  background: var(--bg-input);
+  border-color: var(--border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+}
+.form-control:focus, .form-select:focus {
+  background: var(--bg-input);
+  border-color: var(--primary);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.25);
+}
+.form-control::placeholder { color: var(--text-secondary); }

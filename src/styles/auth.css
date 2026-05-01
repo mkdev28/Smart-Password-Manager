@@ -1,0 +1,33 @@
+.auth-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.auth-tabs .nav-link {
+  color: var(--text-secondary);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font-weight: 500;
+}
+
+.auth-tabs .nav-link.active {
+  color: var(--primary-light);
+  border-bottom: 2px solid var(--primary);
+  background: transparent;
+}
+
+.auth-tabs .nav-link:hover:not(.active) {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border);
+}

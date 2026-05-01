@@ -1,0 +1,5 @@
+.passop-footer {
+  background-color: var(--bg-dark);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
