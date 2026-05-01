@@ -16,12 +16,17 @@ app.use('/api/passwords', passwordRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }));
 
-// Start only after DB connects
-connectDB()
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-    console.error('DB connection failed. Server NOT started.', err);
-    process.exit(1);
-  });
+// In serverless environments, Vercel will call the exported app.
+// For local development, we still want to start the server.
+if (process.env.NODE_ENV !== 'production') {
+  connectDB()
+    .then(() => {
+      app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    })
+    .catch((err) => {
+      console.error('DB connection failed. Server NOT started.', err);
+      process.exit(1);
+    });
+}
+
+module.exports = app;

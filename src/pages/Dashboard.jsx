@@ -19,12 +19,15 @@ export default function Dashboard() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [passwordToDelete, setPasswordToDelete] = useState(null);
 
+  const [isSaving, setIsSaving] = useState(false);
+
   const showToast = (message, type = 'success') => {
     setToast({ show: true, message, type });
     setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 2500);
   };
 
   const handleSave = async (pwdData) => {
+    setIsSaving(true);
     try {
       if (editingPassword) {
         await updatePassword(editingPassword._id, pwdData);
@@ -37,6 +40,8 @@ export default function Dashboard() {
       setEditingPassword(null);
     } catch (err) {
       alert(err.message || 'Error saving password'); // Simple fallback error
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -141,7 +146,8 @@ export default function Dashboard() {
         show={showForm} 
         onClose={() => setShowForm(false)} 
         onSave={handleSave} 
-        editingPassword={editingPassword} 
+        editingPassword={editingPassword}
+        isSaving={isSaving}
       />
 
       {showDeleteConfirm && (

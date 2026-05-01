@@ -22,7 +22,7 @@ export default function PasswordCard({ item, onEdit, onDelete, showToast }) {
   };
 
   return (
-    <div className="card h-100 bg-card border-secondary password-card">
+    <div className="card h-100 bg-card border-secondary password-card text-light">
       <div className="card-body d-flex flex-column">
         <div className="d-flex justify-content-between align-items-start mb-3">
           <h5 className="card-title fw-bold text-truncate mb-0 me-2" title={item.site}>{item.site}</h5>

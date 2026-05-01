@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PasswordGenerator from './PasswordGenerator';
 import StrengthMeter from './StrengthMeter';
 
-export default function PasswordForm({ show, onClose, onSave, editingPassword }) {
+export default function PasswordForm({ show, onClose, onSave, editingPassword, isSaving }) {
   const defaultForm = { site: '', username: '', password: '', category: 'Other' };
   const [form, setForm] = useState(defaultForm);
   const [showPassword, setShowPassword] = useState(false);
@@ -67,8 +67,11 @@ export default function PasswordForm({ show, onClose, onSave, editingPassword })
           </div>
 
           <div className="d-flex justify-content-end gap-2">
-            <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn btn-primary px-4">Save</button>
+            <button type="button" className="btn btn-secondary" onClick={onClose} disabled={isSaving}>Cancel</button>
+            <button type="submit" className="btn btn-primary px-4" disabled={isSaving}>
+              {isSaving ? <span className="spinner-border spinner-border-sm me-2" /> : null}
+              Save
+            </button>
           </div>
         </form>
       </div>
